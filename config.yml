@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: constructions-incongrues/pardonmyfrench-front
+  branch: main
+  base_url: https://decap-proxy.constructions-incongrues.net
+
+locale: fr
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+editor:
+  preview: false
+
+collections:
+  - name: "chanson"
+    label: "Chansons"
+    folder: "chansons"
+    path: '{{slug}}/chanson'
+    format: frontmatter
+    create: true
+    fields:
+      - { label: "Titre", name: "title", widget: "string", hint: "Titre de la chanson" }
+      - { label: "Artistes", name: "artists", widget: "string", hint: "Auteurs-compositrices-interpouètes" }
+      - { label: "Date de sortie", name: "release_date", widget: "datetime", hint: "Date de sortie" }
+      - { label: "Paroles", name: "lyrics", widget: "markdown", hint: "Paroles de la chanson" }
+      - { label: "Audio", name: "audio", widget: "file", hint: "Le tube" }
+      - { label: "Titre original", name: "original_title", widget: "string" }
+      - { label: "Artiste original", name: "original_artist", widget: "string" }
+      - { label: "Clip original", name: "original_clip", widget: "string", hint: "Lien vers un clip vidéo ou audio", required: false }
+    sortable_fields:
+      fields: [title, published_date, artists]
+      default:
+        field: published_date
+        direction: descending
