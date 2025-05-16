@@ -4,8 +4,6 @@ backend:
   branch: main
   base_url: https://decap-proxy.constructions-incongrues.net
 
-locale: fr
-
 media_folder: "uploads"
 public_folder: "/uploads"
 
@@ -15,21 +13,30 @@ editor:
 collections:
   - name: "chanson"
     label: "Chansons"
+    label_singular: "Chanson"
     folder: "chansons"
     path: '{{slug}}/chanson'
     format: frontmatter
     create: true
+    summary: "{{artists}} - {{title}}"
     fields:
+      - { label: "Brouillon", name: "is_draft", widget: "boolean", hint: "Les brouillons ne sont pas affichés sur le site", default: true }
+      - { label: "Date de publication", name: "release_date", widget: "datetime", hint: "Date de sortie" }
       - { label: "Titre", name: "title", widget: "string", hint: "Titre de la chanson" }
       - { label: "Artistes", name: "artists", widget: "string", hint: "Auteurs-compositrices-interpouètes" }
-      - { label: "Date de sortie", name: "release_date", widget: "datetime", hint: "Date de sortie" }
       - { label: "Paroles", name: "lyrics", widget: "markdown", hint: "Paroles de la chanson" }
       - { label: "Audio", name: "audio", widget: "file", hint: "Le tube" }
       - { label: "Titre original", name: "original_title", widget: "string" }
       - { label: "Artiste original", name: "original_artist", widget: "string" }
       - { label: "Clip original", name: "original_clip", widget: "string", hint: "Lien vers un clip vidéo ou audio", required: false }
     sortable_fields:
-      fields: [title, published_date, artists]
+      fields: [title, release_date, artists]
       default:
-        field: published_date
+        field: release_date
         direction: descending
+    view_groups:
+      - label: Année
+        field: release_date
+        pattern: \d{4}
+      - label: Brouillons
+        field: is_draft
