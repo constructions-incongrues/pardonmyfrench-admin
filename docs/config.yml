@@ -2,7 +2,7 @@ backend:
   name: github
   repo: constructions-incongrues/pardonmyfrench-data
   branch: main
-  base_url: https://decap-proxy.constructions-incongrues.net
+  base_url: https://decap-proxy.constructions-incongrues.net/api
 
 media_libraries:
   stock_assets:
