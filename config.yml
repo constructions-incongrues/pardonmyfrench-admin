@@ -24,7 +24,7 @@ collections:
     create: Contributeurs
     summary: "[{{date}}] {{contributors}} - {{title}}"
     fields:
-      - { label: "Publié", name: "is_published", widget: "boolean", hint: "Les brouillons ne sont pas affichés sur le site", default: true }
+      - { label: "Publié", name: "is_published", widget: "boolean", hint: "Les brouillons ne sont pas affichés sur le site", default: false }
       - { label: "Date de publication", name: "date", widget: "datetime", time_format: false, hint: "Date de sortie", required: true }
       - { label: "Titre", name: "title", widget: "string", hint: "Titre de la chanson" }
       - { label: "Contributeurs", name: "contributors", widget: "string", hint: "Auteurs-compositrices-interpouètes" }
