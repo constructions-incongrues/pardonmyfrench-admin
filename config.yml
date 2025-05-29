@@ -41,7 +41,7 @@ collections:
         direction: descending
 
     view_filters:
-      - label: Publié
+      - label: Brouillons
         field: is_published
         pattern: false
 
