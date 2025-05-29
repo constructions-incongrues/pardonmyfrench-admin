@@ -22,10 +22,10 @@ collections:
     path: '{{slug}}/chanson'
     format: frontmatter
     create: Contributeurs
-    summary: "[{{release_date}}] {{contributors}} - {{title}}"
+    summary: "[{{date}}] {{contributors}} - {{title}}"
     fields:
       - { label: "Publié", name: "is_published", widget: "boolean", hint: "Les brouillons ne sont pas affichés sur le site", default: true }
-      - { label: "Date de publication", name: "release_date", widget: "datetime", time_format: false, hint: "Date de sortie", required: true }
+      - { label: "Date de publication", name: "date", widget: "datetime", time_format: false, hint: "Date de sortie", required: true }
       - { label: "Titre", name: "title", widget: "string", hint: "Titre de la chanson" }
       - { label: "Contributeurs", name: "contributors", widget: "string", hint: "Auteurs-compositrices-interpouètes" }
       - { label: "Paroles", name: "lyrics", widget: "text", hint: "Paroles de la chanson" }
@@ -35,9 +35,9 @@ collections:
       - { label: "Clip original", name: "original_clip_url", widget: "string", hint: "Lien vers un clip vidéo ou audio", required: false }
 
     sortable_fields:
-      fields: [release_date, title]
+      fields: [date, title]
       default:
-        field: release_date
+        field: date
         direction: descending
 
     view_filters:
@@ -47,7 +47,7 @@ collections:
 
     view_groups:
       - label: Année
-        field: release_date
+        field: date
         pattern: \d{4}
       - label: Contributeurs
         field: contributors
