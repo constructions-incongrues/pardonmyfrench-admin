@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: constructions-incongrues/pardonmyfrench-front
+  repo: constructions-incongrues/pardonmyfrench-data
   branch: main
   base_url: https://decap-proxy.constructions-incongrues.net
 
@@ -22,31 +22,33 @@ collections:
     path: '{{slug}}/chanson'
     format: frontmatter
     create: Contributeurs
-    summary: '{{contributors}} - {{title}}'
+    summary: "[{{release_date}}] {{contributors}} - {{title}}"
     fields:
-      - { label: Publié, name: is_published, widget: boolean, hint: Les brouillons ne sont pas affichés sur le site, default: true }
-      - { label: Date de publication, name: release_date, widget: datetime, hint: Date de sortie, required: false,   time_format: false }
-      - { label: ID, name: id, widget: number, hint: ID du morceau }
-      - { label: Titre, name: title, widget: string, hint: Titre de la chanson }
-      - { label: Contributeurs, name: contributors, widget: string, hint: Auteurs-compositrices-interpouètes }
-      - { label: Paroles, name: lyrics, widget: text, hint: Paroles de la chanson }
-      - { label: Audio, name: audio, widget: file, hint: Le tube, accept: audio/* }
-      - { label: Titre original, name: original_title, widget: string }
-      - { label: Artiste original, name: original_artist, widget: string }
-      - { label: Clip original, name: original_clip_url, widget: string, hint: Lien vers un clip vidéo ou audio, required: false }
+      - { label: "Publié", name: "is_published", widget: "boolean", hint: "Les brouillons ne sont pas affichés sur le site", default: true }
+      - { label: "Date de publication", name: "release_date", widget: "datetime", time_format: false, hint: "Date de sortie", required: true }
+      - { label: "Titre", name: "title", widget: "string", hint: "Titre de la chanson" }
+      - { label: "Contributeurs", name: "contributors", widget: "string", hint: "Auteurs-compositrices-interpouètes" }
+      - { label: "Paroles", name: "lyrics", widget: "text", hint: "Paroles de la chanson" }
+      - { label: "Audio", name: "audio", widget: "file", hint: "Le tube", accept: "audio/*" }
+      - { label: "Titre original", name: "original_title", widget: "string" }
+      - { label: "Artiste original", name: "original_artist", widget: "string" }
+      - { label: "Clip original", name: "original_clip_url", widget: "string", hint: "Lien vers un clip vidéo ou audio", required: false }
 
     sortable_fields:
-      fields: [title, release_date, contributors, id]
+      fields: [release_date, title]
       default:
-        field: id
+        field: release_date
         direction: descending
+
+    view_filters:
+      - label: Publié
+        field: is_published
+        pattern: false
 
     view_groups:
       - label: Année
         field: release_date
         pattern: \d{4}
-      - label: Publié
-        field: is_published
       - label: Contributeurs
         field: contributors
       - label: Artiste original
