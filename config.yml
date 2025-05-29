@@ -30,7 +30,7 @@ collections:
       - { label: "Contributeurs", name: "contributors", widget: "string", hint: "Auteurs-compositrices-interpouètes" }
       - { label: "Paroles", name: "lyrics", widget: "text", hint: "Paroles de la chanson" }
       - { label: "Audio", name: "audio", widget: "file", hint: "Le tube", accept: "audio/*" }
-      - { label: "LFS OID", name: "mp3_oid", widget: "string" }
+      - { label: "LFS OID", name: "mp3_oid", widget: "string", required: false, hint: "OID du fichier mp3 dans Git LFS" }
       - { label: "Titre original", name: "original_title", widget: "string" }
       - { label: "Artiste original", name: "original_artist", widget: "string" }
       - { label: "Clip original", name: "original_clip_url", widget: "string", hint: "Lien vers un clip vidéo ou audio", required: false }
